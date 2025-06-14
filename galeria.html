@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Galeria</title>
+  <link rel="stylesheet" href="galeria.css">
+    <link rel="shortcut icon" href="https://i.ibb.co/SPG0QMm/9004758-heart-love-valentine-like-icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="galeria-container">
+  <!-- Botão de seta esquerda -->
+  <div class="controls-vertical">
+    <button onclick="prevImage()"><i class="fas fa-chevron-left"></i></button>
+  </div>
+
+  <!-- Slider com imagens e vídeos -->
+  <div id="slider">
+    <div class="imagem-wrapper active">
+    <video src="imagens/Vídeo do WhatsApp de 2025-06-12 à(s) 02.23.49_8d79eab1.mp4" controls></video>
+    </div>
+ 
+  </div>
+
+  <!-- Botão de seta direita -->
+  <div class="controls-vertical">
+    <button onclick="nextImage()"><i class="fas fa-chevron-right"></i></button>
+  </div>
+</div>
+
+<script>
+  const wrappers = document.querySelectorAll('#slider .imagem-wrapper');
+  let index = 0;
+  let intervalo;
+
+  function showImage(i) {
+    wrappers.forEach((el, idx) => {
+      el.classList.toggle('active', idx === i);
+
+      const video = el.querySelector('video');
+      if (video) {
+        if (idx === i) {
+          video.currentTime = 0;
+          video.play();
+        } else {
+          video.pause();
+        }
+      }
+    });
+  }
+
+  function nextImage() {
+    index = (index + 1) % wrappers.length;
+    showImage(index);
+    resetAutoSlide();
+  }
+
+  function prevImage() {
+    index = (index - 1 + wrappers.length) % wrappers.length;
+    showImage(index);
+    resetAutoSlide();
+  }
+
+  function startAutoSlide() {
+    intervalo = setInterval(() => {
+      const current = wrappers[index];
+      const video = current.querySelector('video');
+      if (!video || video.ended || video.paused) {
+        nextImage();
+      }
+    }, 5000);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(intervalo);
+  }
+
+  function resetAutoSlide() {
+    stopAutoSlide();
+    startAutoSlide();
+  }
+
+  showImage(index);
+  startAutoSlide();
+
+  document.getElementById('slider').addEventListener('mouseenter', stopAutoSlide);
+  document.getElementById('slider').addEventListener('mouseleave', startAutoSlide);
+</script>
+
+</body>
+</html>

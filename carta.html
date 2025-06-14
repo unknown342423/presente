@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Carta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="carta.css" />
+  
+  <link href="https://fonts.googleapis.com/css?family=Charm|Cousine|Gochi+Hand|Caveat|Special+Elite" 
+  rel="stylesheet">
+        <link rel="shortcut icon" href="https://i.ibb.co/SPG0QMm/9004758-heart-love-valentine-like-icon.png" >
+</head>
+<body class="hearts-background tema-azul">
+
+
+  <!-- Som da carta -->
+  <audio id="open-sound" src="imagens/carta.mp3" preload="auto"></audio>
+
+  <!-- Estrutura da carta -->
+  <div class="one now">
+    <div class="letter now">
+      <div class="envelope" onclick="envelopeOpen();">
+        <div class="envelope-flap"></div>
+        <div class="envelope-paper"></div>
+        <div class="envelope-detail"></div>
+      </div>
+      <div class="paper">
+        <div class="paper-close king" onclick="paperClose();">X</div>
+        <p class="king txt" id="letter-text"></p>
+      </div>
+    </div>
+    <div class="deliver" onclick="deliverLetter();"></div>
+  </div>
+
+<script>
+    // ✅ Mensagem fixa que será exibida na carta
+const message = `
+
+❤️ Jogo de PERGUNTAS 
+
+
+
+1.Qual o seu apelido preferido ?
+2. Você se lembra da primeira coisa que eu te falei?
+3. Teve um momento em que você percebeu que estava se apaixonando por mim? Qual foi?
+4. Quando você sentiu que nosso relacionamento estava ficando sério?
+5. Qual foi seu maior medo ou insegurança no começo da nossa relação?
+6. Você contou pra alguém quando começamos a nos falar? O que disse?
+7.Qual foi o momento mais engraçado que vivemos no começo?
+8. Teve algo em mim que te surpreendeu logo no início? (pode ser bom ou ruim)
+9.Qual foi o primeiro detalhe meu que você achou fofo ou marcante?
+10. O que fez você querer continuar me conhecendo?
+11.  O que você pensou quando me viu pela primeira vez?
+
+
+
+
+
+
+1. O que você mais ama na nossa relação hoje?
+2. Em que momentos você se sente mais amado(a) por mim?
+3.Tem algo que você gostaria que a gente fizesse mais juntos?
+4. Qual hábito nosso você mais gosta?**
+5. Tem algo no nosso relacionamento que você gostaria de melhorar?
+6. Qual é o momento do nosso dia que você mais espera?
+7. O que você sente que só vive comigo e com mais ninguém?
+8. O que mais te faz sentir seguro(a) ao meu lado?
+9. Se você tivesse que descrever nosso amor hoje com uma palavra, qual seria?
+10. O que eu faço no dia a dia que faz você sorrir sem perceber?
+
+
+
+
+
+1. Onde você se imagina comigo daqui a 5 anos?
+2. Que sonhos você tem para o nosso futuro juntos?
+3. Você gostaria de morar comigo? Como imagina nossa casa?
+4. Tem alguma viagem ou lugar que você quer muito ir comigo?
+5. Como você imagina uma rotina ideal a dois no futuro?
+6. Você pensa em casar? Como seria o casamento ideal pra você?
+7. Você gostaria de ter filhos? Se sim, como imagina essa fase com a gente?
+8. O que você acha que a gente precisa cultivar para ficar juntos por muitos anos?
+9. Que tradições você gostaria de criar comigo? (ex: noite do filme, viagens anuais etc.)
+10. Quando estivermos velhinhos, o que você quer lembrar da nossa história?
+
+
+
+
+
+`;
+
+
+// ✅ Função de digitação da carta
+function typeText(text, element) {
+  let index = 0;
+  element.classList.add('typing');
+  element.innerHTML = "";
+
+  const interval = setInterval(() => {
+    if (index < text.length) {
+      element.innerHTML += text.charAt(index);
+      index++;
+    } else {
+      clearInterval(interval);
+    }
+  }, 40);
+}
+
+// ✅ Abrir carta
+function envelopeOpen() {
+  const letter = document.querySelector('.letter');
+  const letterText = document.getElementById('letter-text');
+  const audio = document.getElementById('open-sound');
+
+  letter.classList.add('letter--open');
+  letterText.innerHTML = message;
+  setTimeout(() => {
+    audio.play();
+  }, 300);
+}
+
+
+// ✅ Fechar carta
+function paperClose() {
+  const letter = document.querySelector('.letter');
+  const letterText = document.getElementById('letter-text');
+
+  letter.classList.remove('letter--open');
+  letterText.innerHTML = "";
+}
+
+
+// ✅ Entregar carta (animação extra se desejar)
+function deliverLetter() {
+  envelopeOpen();
+}
+
+</script>
+</body>
+</html>

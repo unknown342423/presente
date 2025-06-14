@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presente</title>
+  <link rel="stylesheet" href="principal.css">
+  <link rel="shortcut icon" href="https://i.ibb.co/SPG0QMm/9004758-heart-love-valentine-like-icon.png" type="image/x-icon">
+  <!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+
+
+
+<div id="icon1">
+  <img src="imagens/icon1.png" alt="">
+</div>
+
+
+<div id="icon2">
+  <img src="imagens/icon2.png" alt="">
+</div>
+
+  <!-- Ícones organizados em duas linhas -->
+  <div class="icones-wrapper">
+    <div class="icones linha">
+      <!-- 3 primeiros ícones -->
+      <div class="icon-container">
+        <div class="animation">
+          <a href="galeria.html">
+            <img class="imagens" src="imagens/camera.png" alt="Galeria">
+          </a>
+        </div>
+        <p class="texto">Galeria</p>
+      </div>
+      <div class="icon-container">
+        <div class="animation">
+          <a href="motivos.html">
+            <img class="imagens" src="imagens/motivos.png" alt="Motivos">
+          </a>
+        </div>
+        <p class="texto">Motivos
+        </p>
+      </div>
+      <div class="icon-container">
+        <div class="animation">
+          <a href="carta.html">
+            <img class="imagens" src="imagens/carta.png" alt="Carta">
+          </a>
+        </div>
+        <p class="texto">Lista</p>
+      </div>
+    </div>
+
+    <div class="icones linha">
+      <!-- 3 últimos ícones -->
+      <div class="icon-container">
+        <div class="animation">
+          <a href="quiz.html">
+            <img class="imagens" src="imagens/quiz.png" alt="Quiz">
+          </a>
+        </div>
+        <p class="texto">Quiz</p>
+      </div>
+      <div class="icon-container">
+        <div class="animation">
+          <a href="vales.html">
+            <img class="imagens" src="imagens/vale.png" alt="Vales">
+          </a>
+        </div>
+        <p class="texto">Vales</p>
+      </div>
+      <div class="icon-container">
+        <div class="animation">
+          <a href="flor.html">
+            <img class="imagens" src="imagens/flor.png" alt="Flor">
+          </a>
+        </div>
+        <p class="texto">Flor</p>
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <script>
+    // Função para aplicar tema salvo ou padrão
+    function aplicarTemaInicial() {
+      const temaSalvo = localStorage.getItem("temaSelecionado");
+      const body = document.body;
+
+      if (temaSalvo === "rosa") {
+        body.classList.remove("tema-azul");
+        body.classList.add("tema-rosa");
+        atualizarImagensTema("rosa");
+        atualizarCorações("rosa");
+      } else {
+        body.classList.remove("tema-rosa");
+        body.classList.add("tema-azul");
+        atualizarImagensTema("azul");
+        atualizarCorações("azul");
+      }
+    }
+
+    // Trocar tema ao clicar no botão
+    function alternarTema() {
+      const body = document.body;
+      const isAzul = body.classList.contains("tema-azul");
+      const novoTema = isAzul ? "rosa" : "azul";
+
+      body.classList.toggle("tema-azul", !isAzul);
+      body.classList.toggle("tema-rosa", isAzul);
+
+      localStorage.setItem("temaSelecionado", novoTema);
+      atualizarImagensTema(novoTema);
+      atualizarCorações(novoTema);
+    }
+
+    // Atualizar imagens conforme o tema
+    function atualizarImagensTema(tema) {
+      const imagens = document.querySelectorAll('.imagens');
+      imagens.forEach(img => {
+        let src = img.getAttribute('src');
+        if (tema === "rosa") {
+          img.setAttribute("src", src.replace('_azul', '_rosa'));
+        } else {
+          img.setAttribute("src", src.replace('_rosa', '_azul'));
+        }
+      });
+    }
+
+    // Atualizar o emoji dos corações flutuantes
+    function atualizarCorações(tema) {
+      const heart = tema === "rosa" ? '"💖"' : '"💙"';
+      document.documentElement.style.setProperty('--heart-icon', heart);
+    }
+
+
+
+  // Ao carregar a página
+  window.addEventListener('DOMContentLoaded', () => {
+      aplicarTemaInicial();
+
+      // Mensagem de boas-vindas com SweetAlert2
+      setTimeout(() => {
+        Swal.fire({
+          title: '🎁 Bem-vinda, Cabeçuda!',
+          text: '',
+          icon: 'info',
+          confirmButtonText: 'Ok!',
+          background: '#fff7cc',
+          color: '#663c00',
+          showCloseButton: true,
+          confirmButtonColor: '#ff5e9c',  // Cor do botão de confirmação
+          customClass: {
+            popup: 'sweet-popup',
+            title: 'sweet-title',
+            content: 'sweet-content'
+          }
+        });
+      }, 400);
+    });
+  </script>
+</body>
+
+</html>

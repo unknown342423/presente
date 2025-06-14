@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz do Casal 💕</title>
+  <link rel="shortcut icon" href="https://i.ibb.co/SPG0QMm/9004758-heart-love-valentine-like-icon.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Love Ya Like A Sister', cursive;
+      margin: 0;
+      padding: 0;
+      background-color: #ffe4ec;
+      color: #c2185b;
+      overflow-x: hidden;
+    }
+
+    .quiz-container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    #progress-bar {
+      width: 100%;
+      background: #ccc;
+      height: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    #progress {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(to right, #f48fb1, #c2185b);
+      transition: width 0.3s;
+    }
+
+    button {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      background-color: #f48fb1;
+      color: white;
+    }
+
+    .answer-btn {
+      display: block;
+      width: 100%;
+      margin: 8px auto;
+    }
+
+    .correct {
+      color: green;
+      font-weight: bold;
+    }
+
+    .incorrect {
+      color: red;
+      font-weight: bold;
+    }
+
+    .hearts-background span {
+      position: fixed;
+      top: -10px;
+      animation: fall linear forwards;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body class="hearts-background">
+
+  <div class="quiz-container">
+    <h1>💖 Quiz do Casal 💖</h1>
+    <div id="progress-bar"><div id="progress"></div></div>
+    <div id="quiz"></div>
+    <div id="resultado"></div>
+    <button onclick="nextQuestion()" id="nextBtn" style="display: none;">Próxima 💌</button>
+    <button onclick="restartQuiz()" id="restartBtn" style="display:none;">Tentar de novo 🔁</button>
+  </div>
+
+  <script>
+    const container = document.body;
+    setInterval(() => {
+      const heart = document.createElement("span");
+      heart.innerText = "💖";
+      heart.classList.add("hearts-background");
+      const size = Math.random() * 20 + 20;
+      heart.style.left = `${Math.random() * 100}%`;
+      heart.style.fontSize = `${size}px`;
+      heart.style.animationDuration = `${Math.random() * 3 + 3}s`;
+      container.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 500);
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    const questions = [
+      {
+        question: "Qual é a comida favorita dele?",
+        answers: ["Pizza", "Sushi", "Churrasco", "Lasanha"],
+        correctAnswer: "Pizza"
+      },
+      {
+        question: "Onde foi o primeiro encontro?",
+        answers: ["Praça", "Praia", "Restaurante", "Shopping"],
+        correctAnswer: "Praça"
+      },
+      
+      {
+        question: "Quem é mais romântico?",
+        answers: ["Ele", "Ela", "Os dois", "Nenhum 😅"],
+        correctAnswer: "Ele"
+      },
+      
+      {
+        question: "Qual foi o assunto da nossa primeira conversa no insta?",
+        answers: ["Academia", "Escola", "Série", "Filme"],
+        correctAnswer: "Academia"
+      },
+
+       {
+        question: "Quando foi o primeiro beijo",
+        answers: ["01/11/2023", "08/11/2023", " 07/11/2023", "10/11/2023 "],
+        correctAnswer: "01/11/2023"
+      },
+      
+
+ {
+        question: "Quem disse eu te amo primeiro?",
+        answers: ["Ele", "Ela", "Os dois", "Nenhum 😂"],
+        correctAnswer: "Ele"
+      },
+
+
+      {
+        question: "Qual foi a data do pedido de namoro? 🤨 OBS: Acho bom acertar essa. Em caso de erro você sera penalizada",
+        answers: ["07/11/2023", "08/10/2024", "08/11/2023", "12/06/2023"],
+        correctAnswer: "07/11/2023"
+      }
+    ];
+
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function loadQuestion() {
+      const question = questions[currentQuestionIndex];
+      const shuffledAnswers = shuffle([...question.answers]);
+
+      document.getElementById('quiz').innerHTML = `
+        <h2>${question.question}</h2>
+        <div class="answers">
+          ${shuffledAnswers.map(answer => `
+            <button class="answer-btn" onclick="checkAnswer('${answer.replace(/'/g, "\\'")}')">${answer}</button>
+          `).join('')}
+        </div>
+      `;
+      updateProgress();
+    }
+
+    function checkAnswer(selectedAnswer) {
+      const question = questions[currentQuestionIndex];
+      const feedback = document.getElementById('resultado');
+      if (selectedAnswer === question.correctAnswer) {
+        score++;
+        feedback.innerHTML = `<p class="correct">Correto! 🎉</p>`;
+      } else {
+        feedback.innerHTML = `<p class="incorrect">Errado! 😔 A certa era: ${question.correctAnswer}</p>`;
+      }
+      document.querySelectorAll('.answer-btn').forEach(btn => btn.disabled = true);
+      document.getElementById('nextBtn').style.display = 'inline-block';
+    }
+
+    function nextQuestion() {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        loadQuestion();
+        document.getElementById('nextBtn').style.display = 'none';
+        document.getElementById('resultado').innerHTML = '';
+      } else {
+        showResults();
+      }
+    }
+
+    function restartQuiz() {
+      score = 0;
+      currentQuestionIndex = 0;
+      document.getElementById('restartBtn').style.display = 'none';
+      document.getElementById('nextBtn').style.display = 'none';
+      document.getElementById('resultado').innerHTML = '';
+      loadQuestion();
+    }
+
+    function showResults() {
+      const resultado = document.getElementById('resultado');
+      let mensagem = score === questions.length ? '🎉 Uau! Vocês são perfeitos!' :
+                      score >= questions.length * 0.75 ? `Muito bem! ${score}/${questions.length}` :
+                      `Hmm, só ${score}/${questions.length} 😅`;
+      resultado.innerHTML = `<p>${mensagem}</p>`;
+      document.getElementById('nextBtn').style.display = 'none';
+      document.getElementById('restartBtn').style.display = 'inline-block';
+    }
+
+    function updateProgress() {
+      const progress = document.getElementById('progress');
+      progress.style.width = `${(currentQuestionIndex / questions.length) * 100}%`;
+    }
+
+    // Inicia o quiz
+    loadQuestion();
+  </script>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motivos</title>
+  <link rel="shortcut icon" href="https://i.ibb.co/SPG0QMm/9004758-heart-love-valentine-like-icon.png" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      background-color: #ffecc6;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    .book-section {
+      height: 100vh;
+      width: 100%;
+      padding: 40px 0;
+      text-align: center;
+    }
+    .book-section > .container {
+      height: 400px;
+      width: 500px;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2%;
+      margin-bottom: 30px;
+      perspective: 1200px;
+    }
+    .container > .right {
+      position: absolute;
+      height: 100%;
+      width: 50%;
+      transition: 0.7s ease-in-out;
+      transform-style: preserve-3d;
+      right: 0;
+      transform-origin: left;
+      border-radius: 10px 0 0 10px;
+    }
+    .right > figure.front,
+    .right > figure.back {
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      backface-visibility: hidden;
+      background-color: white;
+      overflow: hidden;
+    }
+    .right > figure.front {
+      background-position: right;
+      border-radius: 0 10px 10px 0;
+      box-shadow: 2px 2px 15px -2px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px;
+      color: #333;
+    }
+    .right > figure.back {
+      background-position: left;
+      border-radius: 10px 0 0 10px;
+      box-shadow: -2px 2px 15px -2px rgba(0, 0, 0, 0.2);
+      transform: rotateY(180deg);
+    }
+    .flip {
+      transform: rotateY(-180deg);
+    }
+    .flip::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      border-radius: 0 10px 10px 0;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    .book-section > button {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 2px solid #e9adb7;
+      background-color: transparent;
+      color: #cc808c;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      z-index: 1000;
+      transition: 0.3s ease;
+    }
+    .book-section > button:hover {
+      background-color: #FFC0CB;
+      color: #fff;
+    }
+    .book-section > button:first-of-type {
+      left: 20px;
+    }
+    .book-section > button:last-of-type {
+      right: 20px;
+    }
+    .front#cover,
+    .back#back-cover {
+      background-color: #FFC0CB;
+      font-family: calibri;
+      text-align: left;
+      padding: 0 30px;
+    }
+    .front#cover h1 {
+      color: #333333;
+      margin-bottom: 5px;
+    }
+    .front#cover p {
+      color:#333333;
+      font-size: 14px;
+    }
+    #icon1 img {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+
+}
+  #icon3 img {
+  height: 170px;
+  width: 170px;
+  position: absolute;
+  bottom: -30px;
+  left: 110px;
+  }
+
+   #icon4 img {
+  height: 120px;
+  width: 120px;
+  position: absolute;
+  bottom: -5px;
+  left: 130px;
+  }
+
+     #icon6 img {
+  height: 90px;
+  width: 90px;
+  position: absolute;
+  bottom: 20px;
+  left: 160px;
+  }
+     #icon8 img {
+  height: 150px;
+  width:150px;
+  position: absolute;
+  bottom: -30px;
+  left: 130px;
+  }
+     #icon9 img {
+  height: 100px;
+  width:80px;
+  position: absolute;
+  bottom: 10px;
+  left: 190px;
+  }
+
+     #icon10 img {
+  height: 200px;
+  width:150px;
+  position: absolute;
+  bottom: -70px;
+  left: 100px;
+  }
+
+
+  </style>
+</head>
+<body>
+  <div class="book-section">
+    <div class="container">
+
+      <!-- Capa -->
+      <div class="right">
+        <figure class="back" id="back-cover"></figure>
+        <figure class="front" id="cover">
+
+        </figure>
+      </div>
+ <div class="right">
+        <figure class="back" style=></figure>
+        <figure class="front" style=>
+          <div style="background:rgba(255,255,255,0.8);padding:20px;height:100%;">
+            <h2>Motivo 10</h2>
+            <p>Eu amo os seus buchechões</p>
+                        <div id="icon10">
+  <img src="imagens/icon11.png" alt="">
+</div>
+          </div>
+        </figure>
+      </div>
+
+      <div class="right">
+        <figure class="back" style=></figure>
+        <figure class="front" style=>
+          <div style="background:rgba(255,255,255,0.8);padding:20px;height:100%;">
+            <h2>Motivo 9</h2>
+            <p>Eu amo o seu cheiro e o seu suvaco</p>
+                        <div id="icon9">
+  <img src="imagens/icon9.png" alt="">
+</div>
+          </div>
+        </figure>
+      </div>
+
+
+      <div class="right">
+        <figure class="back" style=></figure>
+        <figure class="front" style=>
+          <div style="background:rgba(255,255,255,0.8);padding:20px;height:100%;">
+            <h2>Motivo 8</h2>
+            <p>Eu amo seu jeito de cuidar de mim.</p>
+                        <div id="icon8">
+  <img src="imagens/icon8.png" alt="">
+</div>
+          </div>
+        </figure>
+      </div>
+
+
+      <div class="right">
+        <figure class="back" style=></figure>
+        <figure class="front" style=>
+          <div style="background:rgba(255,255,255,0.8);padding:20px;height:100%;">
+            <h2>Motivo 7</h2>
+            <p>Eu amo o jeito que você enrola o cabelo por causa do seu TDAH kkkkk</p>
+                        <div id="icon1">
+  <img src="imagens/icon7.png" alt="">
+</div>
+          </div>
+        </figure>
+      </div>
+
+   
+      <div class="right">
+        <figure class="back" style=></figure>
+        <figure class="front" style=>
+          <div style="background:rgba(255,255,255,0.8);padding:20px;height:100%;">
+            <h2>Motivo 6</h2>
+            <p>Eu amo o seu abraço e a sensação de estar completo quando estou com você. Quando voce olha pra mim, é como se eu não estivesse sozinho no mundo.</p>
+                        <div id="icon6">
+  <img src="imagens/icon6.png" alt="">
+</div>
+          </div>
+        </figure>
+      </div>
+
+   
+      <div class="right">
+        <figure class="back" style=></figure>
+        <figure class="front" style=>
+          <div style="background:rgba(255,255,255,0.8);padding:20px;height:100%;">
+            <h2>Motivo 5</h2>
+            <p>Eu amo o seu beijo e o seu corpo </p>
+                        <div id="icon1">
+  <img src="imagens/icon5.png" alt="">
+</div>
+          </div>
+        </figure>
+      </div>
+
+ 
+      <div class="right">
+        <figure class="back" style=></figure>
+        <figure class="front" style=>
+          <div style="background:rgba(255,255,255,0.8);padding:20px;height:100%;">
+            <h2>Motivo 4</h2>
+            <p>Eu amo o seu cabelo e o seu jeito espontaneo e doidinha</p>
+                                  <div id="icon4">
+  <img src="imagens/icon4.png" alt="">
+</div>
+          </div>
+        </figure>
+      </div>
+
+
+      <div class="right">
+        <figure class="back" style=></figure>
+        <figure class="front" style=>
+          <div style="background:rgba(255,255,255,0.8);padding:20px;height:100%;">
+            <h2>Motivo 3</h2>
+            <p>Eu amo quando você começa a falar coisas nada a ver quando ta pegando no sono e quando a  sua boca fica aberta enquanto você dorme</p>
+                        <div id="icon3">
+  <img src="imagens/icon3.png" alt="">
+</div>
+          </div>
+        </figure>
+      </div>
+
+
+      <div class="right">
+        <figure class="back" style=></figure>
+        <figure class="front" style=>
+          <div style="background:rgba(255,255,255,0.8);padding:20px;height:100%;">
+            <h2>Motivo 2</h2>
+            <p>Eu amo o seu esforço e o jeito que você me inspira a ser alguém melhor.</p>
+             <div id="icon1">
+  <img src="imagens/icon2.png" alt="">
+</div>
+          </div>
+        </figure>
+      </div>
+
+
+      <div class="right">
+        <figure class="back" style=></figure>
+        <figure class="front" style=>
+          <div style="background:rgba(255,255,255,0.8);padding:20px;height:100%;">
+            <h2>Motivo 1</h2>
+            <p>Eu amo o seu sorriso </p>
+            <div id="icon1">
+  <img src="imagens/icon1.png" alt="">
+</div>
+          </div>
+        </figure>
+      </div>
+
+    
+      <div class="right">
+        <figure class="back" style=></figure>
+        <figure class="front" style="background:pink;">
+          <div style="background:pink;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+            <h2>Te amo por tudo isso...</h2>
+            <p>...e muito mais!</p>
+          </div>
+        </figure>
+      </div>
+
+    </div>
+
+    <button onclick="turnLeft()">◀ Anterior</button>
+    <button onclick="turnRight()">Próxima ▶</button>
+  </div>
+
+  <script>
+    var right = document.getElementsByClassName("right");
+    var currentIndex = right.length - 1;
+
+    for (var i = 0; i < right.length; i++) {
+      right[i].className = "right";
+      right[i].style.zIndex = i;
+    }
+
+    function turnRight() {
+      if (currentIndex > 0) {
+        right[currentIndex].classList.add("flip");
+        right[currentIndex].style.zIndex = right.length + currentIndex;
+        currentIndex--;
+      }
+    }
+
+    function turnLeft() {
+      if (currentIndex < right.length - 1) {
+        currentIndex++;
+        right[currentIndex].classList.remove("flip");
+        right[currentIndex].style.zIndex = currentIndex;
+      }
+    }
+  </script>
+</body>
+</html>

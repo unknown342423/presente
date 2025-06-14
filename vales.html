@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <title>Vales Presente</title>
+    <link rel="shortcut icon" href="https://i.ibb.co/SPG0QMm/9004758-heart-love-valentine-like-icon.png" type="image/x-icon">
+  <style>
+    :root {
+      --rosa: #ff85a2;
+      --branco: #fff;
+      --fundo: #fff0f5;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--fundo);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      color: var(--rosa);
+      text-align: center;
+      margin-bottom: 0.25rem;
+    }
+
+    p {
+      max-width: 600px;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 0.75rem;
+    }
+
+    p.info {
+      font-size: 0.9rem;
+      color: #a33a5a;
+      margin-top: 0;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    .vales-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .vale {
+      background-color: var(--rosa);
+      color: var(--branco);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+      position: relative;
+      user-select: none;
+    }
+
+    .vale:hover:not(.revelado) {
+      transform: scale(1.05);
+      background-color: #ff6490;
+    }
+
+    .vale.revelado {
+      background-color: #fff;
+      color: #ff6490;
+      border: 2px dashed #ff6490;
+      cursor: default;
+      transform: none !important;
+    }
+
+    .vale span {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: bold;
+      user-select: none;
+    }
+
+    .mensagem {
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+
+    .coracoes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .coração {
+      position: absolute;
+      color: pink;
+      font-size: 24px;
+      animation: subir 5s linear infinite;
+    }
+
+    @keyframes subir {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(0.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>💌 Seus Vales </h1>
+  <p> Cada vale pode ser usado <strong>apenas uma vez</strong>!</p>
+  <p class="info">Clique em um vale para descobrir o presente que ele esconde. Depois de usado, o vale não pode ser usado novamente.</p>
+
+  <div class="vales-container">
+    <div class="vale" onclick="mostrar(this, 'Um vale MASSAGEM relaxante feita por mim! 👐')">
+      <span>💆‍♀️ Vale Massagem</span>
+    </div>
+    <div class="vale" onclick="mostrar(this, 'Um vale BEIJO sempre que quiser 😘 ')">
+      <span>💋 Vale Beijo</span>
+    </div>
+    <div class="vale" onclick="mostrar(this, 'Um vale FILME com pipoca e aconchego 🍿❤️')">
+      <span>🎬 Vale Filme Juntos</span>
+    </div>
+    <div class="vale" onclick="mostrar(this, 'Um vale CAFUNÉ no colo 🥰')">
+      <span>🤗 Vale Cafuné</span>
+    </div>
+    <div class="vale" onclick="mostrar(this, ' Um vale comida')">
+      <span>  🍔 Um Vale comida</span>
+    </div>
+    <div class="vale" onclick="mostrar(this, 'Um vale “FAÇO O QUE VOCÊ QUISER”! 😄')">
+      <span>🎁 Vale Surpresa</span>
+    </div>
+    <div class="vale" onclick="mostrar(this, 'Um vale DIA DE PREGUIÇA: eu cuido de tudo! 🛌')">
+      <span>😴 Vale Dia de Preguiça</span>
+    </div>
+
+    <div class="vale" onclick="mostrar(this, 'Um vale UM PASSEIO ROMÂNTICO só nós dois 🌅')">
+      <span>🚶‍♀️ Vale Passeio</span>
+    </div>
+
+
+
+  <div class="coracoes"></div>
+
+  <script>
+    function mostrar(elemento, mensagem) {
+      if (!elemento.classList.contains("revelado")) {
+        elemento.classList.add("revelado");
+        elemento.innerHTML = `<span>${mensagem}</span>`;
+      }
+    }
+
+    // corações flutuantes
+    const coracoes = document.querySelector(".coracoes");
+    setInterval(() => {
+      const coração = document.createElement("div");
+      coração.classList.add("coração");
+      coração.innerText = "❤️";
+      coração.style.left = Math.random() * 100 + "vw";
+      coração.style.fontSize = Math.random() * 20 + 16 + "px";
+      coracoes.appendChild(coração);
+      setTimeout(() => coração.remove(), 5000);
+    }, 400);
+  </script>
+</body>
+</html>
