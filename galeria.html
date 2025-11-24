@@ -4,23 +4,28 @@
   <meta charset="UTF-8">
   <title>Galeria</title>
   <link rel="stylesheet" href="galeria.css">
-    <link rel="shortcut icon" href="https://i.ibb.co/SPG0QMm/9004758-heart-love-valentine-like-icon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="https://i.ibb.co/SPG0QMm/9004758-heart-love-valentine-like-icon.png" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
 <div class="galeria-container">
 
-
   <!-- Slider com imagens e vídeos -->
   <div id="slider">
     <div class="imagem-wrapper active">
-    <video src="imagens/Vídeo do WhatsApp de 2025-06-12 à(s) 02.23.49_8d79eab1.mp4" controls></video>
+
+      <!-- VÍDEO DO GOOGLE DRIVE -->
+      <iframe 
+        src="https://drive.google.com/file/d/11UfoqpiZdxbY6AjHW8I3Hx8sm3xYgpFb/preview"
+        width="100%" 
+        height="400" 
+        allow="autoplay">
+      </iframe>
+
     </div>
- 
   </div>
 
- 
 </div>
 
 <script>
@@ -60,6 +65,7 @@
     intervalo = setInterval(() => {
       const current = wrappers[index];
       const video = current.querySelector('video');
+
       if (!video || video.ended || video.paused) {
         nextImage();
       }
@@ -84,4 +90,3 @@
 
 </body>
 </html>
-
